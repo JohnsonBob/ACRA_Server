@@ -1,0 +1,19 @@
+version: "3"
+
+networks: 
+  ghost: 
+
+services: 
+  acralyzer: 
+    image: "couchdb:2.3.1"
+    restart: always
+    networks: 
+      - ghost
+    environment: 
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: password
+    volumes: 
+      - $PWD/data:/opt/couchdb/data
+    ports: 
+      - "5984:5984"
+
